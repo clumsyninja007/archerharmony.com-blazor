@@ -1,0 +1,42 @@
+﻿@page "/demo/{name}"
+
+<style>
+    html {
+        overflow: hidden;
+    }
+</style>
+
+<iframe style="width: 100%;
+        height: calc(100vh - 3.25rem);
+        padding: 0;
+        border: none;
+        overflow: hidden;
+        position: absolute;"
+    src="@url">Your browser does not support iframes</iframe>
+
+@code {
+    [Parameter]
+    public string Name { get; set; }
+
+    private string url { get; set; }
+
+    private void setDemoUrl()
+    {
+        url = Name.ToLower() switch
+        {
+            "notkace" => "https://notkace.archerharmony.com",
+            "lifeforcebooks" => "https://lifeforcebooks.archerharmony.com",
+            _ => "error"
+        };
+    }
+
+    protected override void OnInitialized()
+    {
+        setDemoUrl();
+    }
+
+    protected override void OnParametersSet()
+    {
+        setDemoUrl();
+    }
+}

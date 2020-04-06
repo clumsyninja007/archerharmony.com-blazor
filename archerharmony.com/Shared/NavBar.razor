@@ -1,0 +1,49 @@
+﻿<nav class="navbar is-fixed-top is-dark" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <NavLink class="navbar-item has-text-light" href="">
+            Archer Harmony
+        </NavLink>
+        <a role="button" class="navbar-burger @(mobileActive ? "is-active" : "")" @onclick="toggleMobile" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="navbar-menu @(mobileActive ? "is-active" : "")">
+        <div class="navbar-start">
+            <NavLink class="navbar-item is-tab" ActiveClass="is-active" href="" Match="NavLinkMatch.All">
+                Home
+            </NavLink>
+            <NavLink class="navbar-item is-tab" ActiveClass="is-active" href="contact" Match="NavLinkMatch.All">
+                Contact Me
+            </NavLink>
+            <NavLink class="navbar-item is-tab" ActiveClass="is-active" href="demo/notkace" Match="NavLinkMatch.All">
+                NotKace
+            </NavLink>
+            <NavLink class="navbar-item is-tab" ActiveClass="is-active" href="demo/lifeforcebooks" Match="NavLinkMatch.All">
+                Life Force Books
+            </NavLink>
+        </div>
+        <div class="navbar-end">
+            <a class="navbar-item">
+                <span class="icon has-text-primary">
+                    <i class="fab fa-github"></i>
+                </span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+@code {
+    private bool mobileActive { get; set; }
+
+    private void toggleMobile()
+    {
+        mobileActive = !mobileActive;
+    }
+
+    protected override void OnInitialized()
+    {
+        mobileActive = false;
+    }
+}
